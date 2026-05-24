@@ -399,3 +399,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata

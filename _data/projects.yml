@@ -1,0 +1,59 @@
+# Homepage grid index — lean metadata only.
+# Full project content lives in _projects/{slug}.md
+# Order here controls display order on the homepage.
+
+- title: "Isometric Room"
+  slug: "isometric-room"
+  category: "3D Design"
+  period: "May 2023"
+  card_summary: "A stylised isometric room built in Blender as a focused study in modelling, composition, and lighting."
+  thumbnail: "img/projects/isometric-room-thumb.jpg"
+  tags: [Blender, 3D Modelling, Lighting, Composition]
+
+- title: "Dark Forest"
+  slug: "dark-forest"
+  category: "3D Design"
+  period: "Feb 2025 – Present"
+  status: "in-progress"
+  card_summary: "A dark, horror-themed forest environment built in Blender — an experiment in atmosphere, lighting, and short-form cinematic framing."
+  thumbnail: "img/projects/dark-forest-thumb.jpg"
+  tags: [Blender, Environment Art, PBR Textures, Volumetric Lighting, Particle Effects]
+
+- title: "Metaverse Hispanic Talent"
+  slug: "metaverse-hispanic-talent"
+  category: "Unity / Blender"
+  period: "Mar 2022 – Jun 2022"
+  card_summary: "A custom VRChat world for a talent-show roleplay event — built collaboratively, with environment art and interactive multiplayer systems."
+  thumbnail: "img/projects/metaverse-hispanic-talent-thumb.jpg"
+  tags: [Blender, Unity, C#, VRChat SDK, VR, Level Design, Multiplayer]
+
+- title: "Skullcrusher"
+  slug: "skullcrusher"
+  category: "Unity / Game Dev"
+  period: "Jan 2021 – May 2021"
+  card_summary: "A cooperative 3D horror game built in Unity — I led AI programming (zombies + final boss), environment design, and lighting."
+  thumbnail: "img/projects/skullcrusher-thumb.jpg"
+  tags: [Unity, C#, AI Programming, Game Design, Level Design, Environment Art, Lighting]
+
+- title: "Colorblind Test"
+  slug: "colorblind-test"
+  category: "Unity / Game Dev"
+  period: "University"
+  card_summary: "A small Unity prototype exploring colourblind testing — a quick experiment in accessibility-focused interaction design."
+  thumbnail: "img/projects/colorblind-test-thumb.jpg"
+  tags: [Unity, C#, Accessibility, Prototype]
+
+- title: "CyberSchijf van Vijf"
+  slug: "cyberschijf-van-vijf"
+  category: "Web Development"
+  card_summary: "A production iPad web app for a Dutch cybersecurity consultancy — replacing a manual paper-based workshop process with real-time data collection and analytics."
+  thumbnail: "img/projects/cyberschijf-thumb.jpg"
+  tags: [Vanilla JS, Firebase, Firestore, Canvas API, Chart.js, HTML5, CSS3]
+
+- title: "GamePoint — Live Operations"
+  slug: "gamepoint-liveops"
+  category: "Live Operations"
+  period: "Oct 2025 – Apr 2026"
+  card_summary: "Live Operations support for GamePoint's online games — primarily Bingo, with additional work on Poker, Royal Dice, and other titles."
+  thumbnail: "img/projects/gamepoint-thumb.jpg"
+  tags: [LiveOps, Linux, SQL, Python, Game Services]

@@ -3,30 +3,33 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="{{ site.description }}">
+    <meta name="author" content="{{ site.title }}">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.description }}{% endif %}</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/img/header.jpg">
 
-    <!-- Custom Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+    <!-- Favicon — replace favicon.ico with your actual icon -->
+    <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico">
 
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css" type="text/css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <!-- Google Fonts: Roboto (headings) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- Font Awesome 4 (icons) -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Site styles -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css" type="text/css">
 
 </head>

@@ -1,0 +1,31 @@
+// ─── Scroll-triggered reveal ─────────────────────────────────────────────────
+// Elements with .reveal-on-scroll start hidden and fade+slide up on entry.
+// IntersectionObserver in js/animations.js adds .is-visible when in viewport.
+// Stagger delay via CSS custom property --reveal-delay on each element.
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+// ─── prefers-reduced-motion override ─────────────────────────────────────────
+// If the user has opted out of animation, show elements immediately — no delay.
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    header {
+        animation: none !important;
+    }
+}

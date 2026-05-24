@@ -1,12 +1,32 @@
 # Site settings
-title:
-email:
-description: > # this means to ignore newlines until "baseurl:"
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "" # the base hostname & protocol for your site
+title:       "Missael Ponce"
+email:       "jassirortiz02@gmail.com"
+description: "Game & Multiplatform Developer | Live Operations & Game Services"
+baseurl:     ""
+url:         "https://missaelponce.github.io"
 
-twitter_username:
-github_username:
+linkedin_username: "jassir-missael-ortiz-ponce-b5478a1b8"
+github_username:   "MissaelPonce"
 
 # Build settings
 markdown: kramdown
+
+# Collections
+# output: false = content is accessible via site.projects in Liquid
+# but no individual pages are generated yet.
+# Flip to true in Phase 4 when _layouts/project.html is ready.
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Site assets — swappable without touching templates
+logo: "img/logo/logo mp-02.svg"
+
+# Exclude from _site output
+exclude:
+  - Context/
+  - MAINTENANCE.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock

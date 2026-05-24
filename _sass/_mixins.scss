@@ -55,12 +55,18 @@
 	}
 }
 
-@mixin sans-serif-font()
+// Heading font (Roboto)
+@mixin heading-font()
 {
-	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-family: $font-heading;
 }
 
-@mixin serif-font()
+// Body font (Inter)
+@mixin body-font()
 {
-	font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+    font-family: $font-body;
 }
+
+// Backward-compat aliases — _base.scss legacy references
+@mixin sans-serif-font() { @include heading-font; }
+@mixin serif-font()      { @include body-font; }

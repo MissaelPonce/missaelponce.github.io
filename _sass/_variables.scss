@@ -1,0 +1,34 @@
+// ─── Colours ────────────────────────────────────────────────────────────────
+
+$color-bg:        #0D1321;  // page background
+$color-surface:   #1D2D44;  // cards, alternate sections
+$color-accent:    #3E5C76;  // primary buttons, hover overlays, hr
+$color-highlight: #748CAB;  // links, muted text, hover accent
+$color-text:      #F0EBD8;  // headings + body text
+$color-muted:     #748CAB;  // secondary / metadata text
+
+$color-hero-overlay:  rgba(#0D1321, 0.45);  // over hero image/video
+$color-card-overlay:  rgba(#3E5C76, 0.92);  // portfolio card hover
+
+// ─── Legacy aliases ──────────────────────────────────────────────────────────
+// Keep _base.scss compiling until Phase 4 SCSS rewrite replaces direct usage.
+$theme-primary: $color-accent;   // was #F05F40 orange
+$theme-dark:    $color-bg;       // was #222
+
+// ─── Typography ─────────────────────────────────────────────────────────────
+
+$font-heading: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+$font-body:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+$font-size-base:   16px;
+$line-height-base: 1.65;
+
+// ─── Spacing ────────────────────────────────────────────────────────────────
+
+$section-padding: 100px;
+$aside-padding:    50px;
+
+// ─── Transitions ─────────────────────────────────────────────────────────────
+
+$transition-base: all 0.35s ease;
+$transition-fast: all 0.2s ease;

@@ -1,3 +1,5 @@
+// ─── Reset / Base ────────────────────────────────────────────────────────────
+
 html,
 body {
     height: 100%;
@@ -5,101 +7,136 @@ body {
 }
 
 body {
-    @include serif-font;
+    @include body-font;
+    background-color: $color-bg;
+    color: $color-text;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
 }
 
 hr {
-    border-color: $theme-primary;
+    border-color: $color-accent;
     border-width: 3px;
     max-width: 50px;
 }
 
 hr.light {
-    border-color: white;
+    border-color: rgba($color-text, 0.4);
+}
+
+hr.primary {
+    border-color: $color-accent;
 }
 
 a {
     @include transition-all;
-    color: $theme-primary;
+    color: $color-highlight;
     &:hover,
     &:focus {
-        color: darken($theme-primary, 10%);
+        color: $color-text;
+        text-decoration: none;
     }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    @include sans-serif-font;
+h1, h2, h3, h4, h5, h6 {
+    @include heading-font;
+    color: $color-text;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 p {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
     margin-bottom: 20px;
+    color: $color-text;
 }
 
+::selection {
+    color: $color-bg;
+    text-shadow: none;
+    background: $color-highlight;
+}
+
+::-moz-selection {
+    color: $color-bg;
+    text-shadow: none;
+    background: $color-highlight;
+}
+
+// ─── Section backgrounds ─────────────────────────────────────────────────────
+
 .bg-primary {
-    background-color: $theme-primary;
+    background-color: $color-surface;
 }
 
 .bg-dark {
-    background-color: $theme-dark;
-    color: white;
-}
-
-.text-faded {
-    color: rgba(white, .7);
+    background-color: $color-bg;
+    color: $color-text;
 }
 
 section {
-    padding: 100px 0;
+    padding: $section-padding 0;
+    background-color: $color-bg;
 }
 
 aside {
-    padding: 50px 0;
+    padding: $aside-padding 0;
 }
 
 .no-padding {
     padding: 0;
 }
 
-// Navigation
+.text-faded {
+    color: rgba($color-text, 0.75);
+}
+
+.text-muted {
+    color: $color-muted;
+}
+
+// ─── Navigation ──────────────────────────────────────────────────────────────
 
 .navbar-default {
-    background-color: white;
-    border-color: rgba($theme-dark, .5);
-    @include sans-serif-font;
+    background-color: transparent;
+    border-color: rgba($color-text, 0.15);
+    @include heading-font;
     @include transition-all;
+
     .navbar-header .navbar-brand {
-        color: $theme-primary;
-        @include sans-serif-font;
-        font-weight: 700;
-        text-transform: uppercase;
+        padding: 10px 15px;
         &:hover,
         &:focus {
-            color: darken($theme-primary, 10%);
+            opacity: 0.85;
         }
     }
+
+    .nav-logo {
+        height: 36px;
+        width: auto;
+        display: block;
+    }
+
     .nav {
         > li {
             > a,
             > a:focus {
                 text-transform: uppercase;
                 font-weight: 700;
-                font-size: 13px;
-                color: $theme-dark;
+                font-size: 12px;
+                letter-spacing: 0.08em;
+                color: rgba($color-text, 0.75);
                 &:hover {
-                    color: $theme-primary;
+                    color: $color-text;
+                    background-color: transparent;
                 }
             }
             &.active {
                 > a,
                 > a:focus {
-                    color: $theme-primary !important;
+                    color: $color-highlight !important;
                     background-color: transparent;
                     &:hover {
                         background-color: transparent;
@@ -108,46 +145,27 @@ aside {
             }
         }
     }
-    @media (min-width: 768px) {
-        background-color: transparent;
-        border-color: rgba(white, .3);
-        .navbar-header .navbar-brand {
-            color: rgba(white, .7);
-            &:hover,
-            &:focus {
-                color: white;
-            }
-        }
+
+    &.affix {
+        background-color: $color-bg;
+        border-color: rgba($color-accent, 0.3);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+
         .nav > li > a,
         .nav > li > a:focus {
-            color: rgba(white, .7);
+            color: rgba($color-text, 0.75);
             &:hover {
-                color: white;
+                color: $color-text;
             }
         }
-        &.affix {
-            background-color: white;
-            border-color: rgba($theme-dark, .5);
-            .navbar-header .navbar-brand {
-                color: $theme-primary;
-                font-size: 14px;
-                &:hover,
-                &:focus {
-                    color: darken($theme-primary, 10%);
-                }
-            }
-            .nav > li > a,
-            .nav > li > a:focus {
-                color: $theme-dark;
-                &:hover {
-                    color: $theme-primary;
-                }
-            }
+        .nav > li.active > a,
+        .nav > li.active > a:focus {
+            color: $color-highlight !important;
         }
     }
 }
 
-// Homepage Header
+// ─── Hero ────────────────────────────────────────────────────────────────────
 
 header {
     position: relative;
@@ -157,45 +175,59 @@ header {
     background-position: center;
     background-image: url('../img/header.jpg');
     text-align: center;
-    color: white;
+    color: $color-text;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $color-hero-overlay;
+        z-index: 1;
+    }
+
     .header-content {
         position: relative;
+        z-index: 2;
         text-align: center;
-        padding: 100px 15px 100px;
+        padding: 100px 15px;
         width: 100%;
+
         .header-content-inner {
             h1 {
-                font-weight: 700;
+                font-weight: 900;
                 text-transform: uppercase;
+                letter-spacing: 0.12em;
                 margin-top: 0;
                 margin-bottom: 0;
+                color: $color-text;
             }
             hr {
                 margin: 30px auto;
+                border-color: $color-accent;
             }
             p {
                 font-weight: 300;
-                color: rgba(white, .7);
-                font-size: 16px;
+                color: rgba($color-text, 0.8);
+                font-size: 18px;
                 margin-bottom: 50px;
+                letter-spacing: 0.03em;
             }
         }
     }
+
     @media (min-width: 768px) {
-        min-height: 100%;
+        min-height: 100vh;
         .header-content {
             position: absolute;
             top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
             transform: translateY(-50%);
             padding: 0 50px;
             .header-content-inner {
                 max-width: 1000px;
-                margin-left: auto;
-                margin-right: auto;
+                margin: 0 auto;
                 p {
-                    font-size: 18px;
+                    font-size: 20px;
                     max-width: 80%;
                     margin-left: auto;
                     margin-right: auto;
@@ -205,21 +237,77 @@ header {
     }
 }
 
-// Sections
+// Ken Burns effect on hero background
+@media (prefers-reduced-motion: no-preference) {
+    header {
+        animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes kenBurns {
+        from { background-size: 105%; background-position: 48% 52%; }
+        to   { background-size: 110%; background-position: 52% 48%; }
+    }
+}
+
+// ─── Section headings ────────────────────────────────────────────────────────
 
 .section-heading {
     margin-top: 0;
+    color: $color-text;
 }
+
+// ─── Skills section ──────────────────────────────────────────────────────────
 
 .service-box {
     max-width: 400px;
     margin: 50px auto 0;
+    color: $color-text;
+
     @media (min-width: 992px) {
         margin: 20px auto 0;
     }
-    p {
-        margin-bottom: 0;
+
+    i.fa {
+        color: $color-highlight;
+        display: block;
+        margin-bottom: 20px;
     }
+
+    h3 {
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
+        color: $color-text;
+    }
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        color: $color-muted;
+        font-size: 14px;
+        line-height: 1.8;
+
+        &::before {
+            content: '–';
+            margin-right: 6px;
+            color: $color-accent;
+        }
+    }
+}
+
+// ─── Portfolio grid ──────────────────────────────────────────────────────────
+
+#portfolio {
+    background-color: $color-bg;
+}
+
+.portfolio-section-header {
+    padding: 60px 0 40px;
+    background-color: $color-bg;
 }
 
 .portfolio-box {
@@ -227,125 +315,538 @@ header {
     display: block;
     max-width: 650px;
     margin: 0 auto;
+    overflow: hidden;
+
+    img {
+        @include transition-all;
+    }
+
     .portfolio-box-caption {
-        color: white;
+        color: $color-text;
         opacity: 0;
         display: block;
-        background: rgba( $theme-primary, .9 );
+        background: $color-card-overlay;
         position: absolute;
         bottom: 0;
         text-align: center;
         width: 100%;
         height: 100%;
         @include transition-all;
+
         .portfolio-box-caption-content {
             width: 100%;
             text-align: center;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            .project-category,
-            .project-name {
-                @include sans-serif-font;
-                padding: 0 15px;
-            }
+            padding: 0 20px;
+
             .project-category {
+                @include heading-font;
                 text-transform: uppercase;
                 font-weight: 600;
-                font-size: 14px;
+                font-size: 13px;
+                letter-spacing: 0.1em;
+                color: rgba($color-text, 0.7);
+                margin-bottom: 8px;
             }
+
             .project-name {
+                @include heading-font;
                 font-size: 18px;
+                font-weight: 700;
+                color: $color-text;
+                margin-bottom: 12px;
+            }
+
+            .project-tags {
+                margin-top: 8px;
             }
         }
     }
+
     &:hover {
         .portfolio-box-caption {
             opacity: 1;
         }
+        img {
+            transform: scale(1.03);
+        }
     }
+
+    &:focus {
+        outline: 2px solid $color-highlight;
+        outline-offset: 2px;
+    }
+
     @media (min-width: 768px) {
-        .portfolio-box-caption {
-            .portfolio-box-caption-content {
-                .project-category {
-                    font-size: 16px;
-                }
-                .project-name {
-                    font-size: 22px;
-                }
-            }
+        .portfolio-box-caption-content {
+            .project-category { font-size: 14px; }
+            .project-name     { font-size: 22px; }
         }
     }
 }
 
-.call-to-action {
-    h2 {
-        margin: 0 auto 20px;
+.tag {
+    display: inline-block;
+    background: rgba($color-text, 0.15);
+    color: rgba($color-text, 0.85);
+    border-radius: 3px;
+    font-size: 11px;
+    font-family: $font-body;
+    font-weight: 600;
+    padding: 2px 7px;
+    margin: 2px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+}
+
+// ─── Experience section ──────────────────────────────────────────────────────
+
+#experience {
+    background-color: $color-surface;
+}
+
+.experience-item {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba($color-accent, 0.3);
+
+    &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 }
 
-// Bootstrap Overrides
-.text-primary {
-    color: $theme-primary;
+.experience-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
 }
 
-.no-gutter > [class*='col-'] {
-    padding-right:0;
-    padding-left:0;
+.experience-period,
+.experience-location {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $color-muted;
+    font-family: $font-body;
 }
 
-// Button Styles
-.btn-default {
-    @include button-variant($theme-dark, white, white);
+.experience-period::after {
+    content: '·';
+    margin-left: 16px;
+    color: $color-accent;
 }
 
-.btn-primary {
-    @include button-variant(white, $theme-primary, $theme-primary);
+.experience-role {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text;
+    margin: 0 0 4px;
+    letter-spacing: 0.05em;
 }
+
+.experience-company {
+    font-size: 14px;
+    font-weight: 400;
+    color: $color-highlight;
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 0 0 16px;
+    font-family: $font-body;
+}
+
+.experience-highlights {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+
+    li {
+        color: rgba($color-text, 0.8);
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 8px;
+        padding-left: 16px;
+        position: relative;
+
+        &::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: $color-accent;
+        }
+    }
+}
+
+// ─── Contact section ─────────────────────────────────────────────────────────
+
+#contact {
+    background-color: $color-bg;
+}
+
+.contact-link {
+    display: block;
+    color: $color-muted;
+    @include transition-all;
+
+    i.fa {
+        display: block;
+        margin-bottom: 16px;
+        color: $color-highlight;
+        @include transition-all;
+    }
+
+    p {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: $color-muted;
+        @include transition-all;
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        color: $color-text;
+
+        i.fa {
+            color: $color-text;
+            transform: translateY(-4px);
+        }
+
+        p {
+            color: $color-text;
+        }
+    }
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────
+
+footer {
+    background-color: $color-bg;
+    border-top: 1px solid rgba($color-accent, 0.25);
+    padding: 30px 0;
+    text-align: center;
+
+    p {
+        color: $color-muted;
+        font-size: 13px;
+        margin: 0;
+        font-family: $font-body;
+    }
+}
+
+// ─── Buttons ─────────────────────────────────────────────────────────────────
 
 .btn {
-    @include sans-serif-font;
+    @include heading-font;
     border: none;
     border-radius: 300px;
     font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    @include transition-all;
 }
 
 .btn-xl {
-    padding: 15px 30px;
+    padding: 15px 36px;
 }
 
-// Contact
-#contact .fa {
-    color: $theme-dark;
-    font-size: 4em;
+.btn-primary {
+    background-color: $color-accent;
+    color: $color-text;
+    border: 2px solid $color-accent;
+
+    &:hover,
+    &:focus {
+        background-color: $color-highlight;
+        border-color: $color-highlight;
+        color: $color-bg;
+    }
 }
 
-// Extras
-// -- Highlight Color Customization
-::-moz-selection {
-    color: white;
-    text-shadow: none;
-    background: $theme-dark;
+.btn-default {
+    background-color: transparent;
+    color: $color-text;
+    border: 2px solid rgba($color-text, 0.5);
+
+    &:hover,
+    &:focus {
+        background-color: rgba($color-text, 0.1);
+        border-color: $color-text;
+        color: $color-text;
+    }
 }
 
-::selection {
-    color: white;
-    text-shadow: none;
-    background: $theme-dark;
+// ─── Project detail page ─────────────────────────────────────────────────────
+
+.project-page {
+    background-color: $color-bg;
 }
 
-img::selection {
-    color: white;
-    background: transparent;
+.project-hero {
+    background-color: $color-surface;
+    padding: 120px 0 60px;
+    border-bottom: 1px solid rgba($color-accent, 0.3);
 }
 
-img::-moz-selection {
-    color: white;
-    background: transparent;
+.project-back {
+    margin-bottom: 24px;
+
+    a {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: $color-muted;
+        font-family: $font-body;
+
+        &:hover { color: $color-text; }
+    }
+}
+
+.project-category-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $color-highlight;
+    font-family: $font-body;
+    margin-bottom: 8px;
+}
+
+.project-period {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-muted;
+    font-family: $font-body;
+    margin-left: 12px;
+    margin-bottom: 8px;
+}
+
+.project-title {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: $color-text;
+    text-transform: uppercase;
+    margin: 12px 0 20px;
+
+    @media (min-width: 768px) {
+        font-size: 48px;
+    }
+}
+
+.project-tag-strip {
+    margin-bottom: 24px;
+}
+
+.project-links {
+    margin-top: 8px;
+
+    .btn {
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+.btn-sm {
+    padding: 8px 20px;
+    font-size: 12px;
+}
+
+.project-body {
+    padding: 60px 0 80px;
+    background-color: $color-bg;
+}
+
+.project-content {
+    h2 {
+        font-size: 20px;
+        letter-spacing: 0.08em;
+        margin: 48px 0 16px;
+        padding-top: 8px;
+        border-top: 1px solid rgba($color-accent, 0.25);
+        color: $color-text;
+        text-transform: uppercase;
+
+        &:first-child {
+            margin-top: 0;
+            border-top: none;
+        }
+    }
+
+    h3 {
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        margin: 32px 0 12px;
+        color: $color-highlight;
+        text-transform: uppercase;
+    }
+
+    p {
+        color: rgba($color-text, 0.85);
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    ul, ol {
+        color: rgba($color-text, 0.85);
+        font-size: 16px;
+        line-height: 1.75;
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    li {
+        margin-bottom: 6px;
+    }
+
+    strong {
+        color: $color-text;
+        font-weight: 600;
+    }
+
+    code {
+        background: rgba($color-accent, 0.2);
+        color: $color-highlight;
+        border-radius: 3px;
+        padding: 2px 5px;
+        font-size: 13px;
+    }
+
+    pre {
+        background: $color-surface;
+        border: 1px solid rgba($color-accent, 0.3);
+        border-radius: 6px;
+        padding: 20px;
+        overflow-x: auto;
+
+        code {
+            background: none;
+            padding: 0;
+            color: rgba($color-text, 0.85);
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+        font-size: 15px;
+
+        th {
+            background: $color-surface;
+            color: $color-text;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid $color-accent;
+        }
+
+        td {
+            padding: 10px 14px;
+            color: rgba($color-text, 0.85);
+            border-bottom: 1px solid rgba($color-accent, 0.2);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+    }
+
+    em {
+        color: $color-muted;
+        font-style: italic;
+    }
+
+    blockquote {
+        border-left: 3px solid $color-accent;
+        padding: 4px 0 4px 20px;
+        margin: 24px 0;
+        color: $color-muted;
+        font-style: italic;
+    }
+
+    hr {
+        border-color: rgba($color-accent, 0.25);
+        margin: 40px 0;
+        max-width: 100%;
+    }
+}
+
+.project-collaborators {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba($color-accent, 0.25);
+
+    h4 {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: $color-muted;
+        margin-bottom: 16px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        font-size: 15px;
+        color: rgba($color-text, 0.85);
+        margin-bottom: 8px;
+
+        a {
+            color: $color-highlight;
+            font-weight: 600;
+            &:hover { color: $color-text; }
+        }
+    }
+
+    .collab-role {
+        color: $color-muted;
+        font-size: 14px;
+        margin-left: 4px;
+    }
+}
+
+.project-images {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba($color-accent, 0.2);
+}
+
+.project-img {
+    border-radius: 4px;
+    margin-bottom: 24px;
+    border: 1px solid rgba($color-accent, 0.2);
+}
+
+// ─── Utilities ───────────────────────────────────────────────────────────────
+
+.text-primary {
+    color: $color-highlight;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
 }
 
 body {
-    -webkit-tap-highlight-color: $theme-dark;
+    -webkit-tap-highlight-color: $color-accent;
 }
-

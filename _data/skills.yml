@@ -1,0 +1,48 @@
+groups:
+  - category: "Languages & Scripting"
+    icon: "fa-code"
+    skills:
+      - C#
+      - Java
+      - Kotlin
+      - Python
+      - SQL
+      - JavaScript
+      - Visual Basic
+
+  - category: "Game Dev & 3D"
+    icon: "fa-gamepad"
+    skills:
+      - Unity 2D / 3D
+      - Blender
+      - Game configuration & maintenance
+      - LiveOps support
+      - Cross-platform development
+
+  - category: "Infrastructure & DevOps"
+    icon: "fa-server"
+    skills:
+      - Git / Version control
+      - Docker & Docker Desktop
+      - Nginx (foundations)
+      - Kubernetes (foundations)
+      - Basic Linux administration
+      - Ports configuration
+
+  - category: "Web & Markup"
+    icon: "fa-globe"
+    skills:
+      - HTML / CSS / XML
+      - Debugging & troubleshooting
+      - Production tools & internal platforms
+      - Computer assembly
+
+soft_skills:
+  - Problem-solving & troubleshooting mindset
+  - Proactive & self-driven
+  - Fast learner with strong adaptability
+  - Team-oriented & collaborative
+  - Clear and effective communication
+  - High sense of responsibility & reliability
+  - Analytical thinking
+  - Continuous improvement mindset

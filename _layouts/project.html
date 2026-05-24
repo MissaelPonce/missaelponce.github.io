@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body id="page-top" class="project-page">
+
+  {% include nav.html %}
+
+  <!-- Project hero banner -->
+  <div class="project-hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+          <p class="project-back"><a href="{{ site.baseurl }}/#portfolio">&larr; All Projects</a></p>
+          <span class="project-category-label">{{ page.category }}</span>
+          {% if page.period %}<span class="project-period">{{ page.period }}</span>{% endif %}
+          <h1 class="project-title">{{ page.title }}</h1>
+          <div class="project-tag-strip">
+            {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% if page.links and page.links.size > 0 %}
+          <div class="project-links">
+            {% for link in page.links %}
+            <a href="{{ link.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">{{ link.label }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project body -->
+  <section class="project-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 project-content">
+          {{ content }}
+        </div>
+      </div>
+
+      <!-- Collaborators -->
+      {% if page.collaborators and page.collaborators.size > 0 %}
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="project-collaborators">
+            <h4>Collaborators</h4>
+            <ul>
+              {% for person in page.collaborators %}
+              <li>
+                {% if person.url and person.url != "" %}
+                <a href="{{ person.url }}" target="_blank" rel="noopener">{{ person.name }}</a>
+                {% else %}
+                {{ person.name }}
+                {% endif %}
+                {% if person.role %}<span class="collab-role">— {{ person.role }}</span>{% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Screenshots -->
+      {% if page.images and page.images.size > 0 %}
+      <div class="row project-images">
+        {% for image in page.images %}
+        <div class="col-lg-{% if page.images.size == 1 %}10 col-lg-offset-1{% elsif page.images.size == 2 %}6{% else %}4{% endif %} col-sm-6">
+          <img src="{{ site.baseurl }}/{{ image.src }}" alt="{{ image.alt }}" class="img-responsive project-img">
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+  {% include footer.html %}
+  {% include scripts.html %}
+
+</body>
+</html>
