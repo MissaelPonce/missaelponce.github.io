@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const p = await (await b.newContext({viewport:{width:1280,height:900}})).newPage();
+await p.goto('http://localhost:4000/', {waitUntil:'networkidle'});
+await p.evaluate(async()=>{for(let y=0;y<=document.body.scrollHeight;y+=innerHeight*0.8){scrollTo(0,y);await new Promise(r=>setTimeout(r,120));}scrollTo(0,0);await new Promise(r=>setTimeout(r,300));});
+await p.screenshot({path:'tests/screenshots/r3b-home.png', fullPage:true});
+const nav = await p.evaluate(()=>[...document.querySelectorAll('.navbar-nav a')].map(a=>a.textContent.trim()));
+console.log('NAV:', JSON.stringify(nav));
+await p.goto('http://localhost:4000/projects/colorblind-test/', {waitUntil:'networkidle'});
+await p.waitForTimeout(3500);
+await p.screenshot({path:'tests/screenshots/r3b-colorblind-page.png', fullPage:true});
+await b.close();

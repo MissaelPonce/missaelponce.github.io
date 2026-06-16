@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row no-gutter">
+        <div class="row portfolio-row">
             {% for project in site.data.projects %}
             <div class="col-lg-4 col-sm-6">
                 <a href="{{ site.baseurl }}/projects/{{ project.slug }}/" class="portfolio-box reveal-on-scroll" style="--reveal-delay: {{ forloop.index0 | times: 80 }}ms">

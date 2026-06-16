@@ -1,6 +1,7 @@
 # Site settings
 title:       "Missael Ponce"
 email:       "jassirortiz02@gmail.com"
+phone:       "(+31) 626019346"
 description: "Game & Multiplatform Developer | Live Operations & Game Services"
 baseurl:     ""
 url:         "https://missaelponce.github.io"
@@ -21,7 +22,7 @@ collections:
     permalink: /projects/:name/
 
 # Site assets — swappable without touching templates
-logo: "img/logo/logo mp-02.svg"
+logo: "img/logo/logo_mp-02.png"
 
 # Exclude from _site output
 exclude:
@@ -30,3 +31,12 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - tests/
+  - assets-src/
+  - ColorBlindBuild/
+
+keep_files:
+     - games

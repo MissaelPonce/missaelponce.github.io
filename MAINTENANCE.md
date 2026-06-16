@@ -6,19 +6,36 @@ How to update and extend the site without needing to remember how Jekyll works. 
 
 ## How the site works (30-second overview)
 
-Jekyll is a static site generator. It reads your content files (YAML, Markdown) and template files (HTML with Liquid tags), builds a static site, and outputs it to `_site/`. GitHub Pages runs Jekyll automatically on every push — you never touch `_site/` directly.
+Jekyll is a static site generator. It reads your content files (YAML, Markdown) and template files (HTML with Liquid tags), builds a static site, and outputs it to `_site/`. GitHub Pages runs Jekyll automatically on every push; you never touch `_site/` directly.
 
 **Content you'll edit regularly:**
 
 | Folder / file | What lives there |
 |---|---|
-| `_data/projects.yml` | Homepage project grid (7 cards) |
+| `_data/projects.yml` | Homepage project grid (the cards) |
 | `_projects/{slug}.md` | Full project detail pages |
-| `_data/experience.yml` | Work history + education |
 | `_data/skills.yml` | Skill groups + soft skills |
-| `_config.yml` | Site-level settings (title, email, logo path) |
+| `_config.yml` | Site-level settings (title, email, phone, logo path) |
+| `terms.md` / `privacy.md` | Legal pages linked in the footer |
 
 Everything else (layouts, SCSS, JavaScript) only needs changing if you're modifying the design.
+
+> **Note:** The Experience and Education sections are no longer shown on the site (that info lives in the CV). `_data/experience.yml` and `_includes/experience.html` still exist but are not included anywhere. To bring the section back, re-add `{% include experience.html %}` to `_layouts/front.html`.
+
+---
+
+## Per-project image & video convention
+
+Each project keeps its media in its own folder:
+
+```
+img/portfolio/{slug}/
+    header.{png|jpg|webp|gif}   ← the homepage card image (a.k.a. thumbnail)
+    01.png, 02.png, 03.jpg ...  ← gallery screenshots, numbered in display order
+```
+
+- The **`header.*`** file is the image shown on the homepage card. It is also used as the **first item in the detail-page gallery** by default.
+- Gallery screenshots are simply numbered `01`, `02`, … Any image extension works; match what you put in the `images:` list.
 
 ---
 
@@ -32,9 +49,9 @@ Open `_data/projects.yml` and append a new entry:
 - title: "Your Project Title"
   slug: "your-project-slug"        # becomes the URL: /projects/your-project-slug/
   category: "Unity / Game Dev"     # shown as the label on the card
-  period: "Jan 2024"               # optional — remove the line if not needed
-  card_summary: "One sentence shown on the homepage card."
-  thumbnail: "img/projects/your-project-thumb.jpg"
+  period: "Jan 2024"               # optional; remove the line if not needed
+  card_summary: "One sentence describing the project."
+  thumbnail: "img/portfolio/your-project-slug/header.png"
   tags: [Unity, C#, Tag3]
 ```
 
@@ -49,10 +66,13 @@ Create `_projects/your-project-slug.md`:
 layout: project
 title: "Your Project Title"
 category: "Unity / Game Dev"
+period: "Jan 2024"
 tags: [Unity, C#, Tag3]
-thumbnail: "img/projects/your-project-thumb.jpg"
+thumbnail: "img/portfolio/your-project-slug/header.png"
 images:
-  - src: "img/projects/your-project-01.jpg"
+  - src: "img/portfolio/your-project-slug/01.png"
+    alt: "Descriptive alt text"
+  - src: "img/portfolio/your-project-slug/02.png"
     alt: "Descriptive alt text"
 links:
   - label: "GitHub"
@@ -62,21 +82,46 @@ links:
 Your project description in Markdown goes here.
 ```
 
-Remove the `links:` block entirely if there are no links. Remove `images:` if there are no screenshots yet.
+Remove the `links:` block entirely if there are no links. Remove `images:` if there are no screenshots.
 
-### Step 3 — Add images
+### Step 3 — Add the images
 
-Place images in `img/projects/`. Naming convention:
-- `{slug}-thumb.jpg` — homepage card thumbnail
-- `{slug}-01.jpg`, `{slug}-02.jpg`, etc. — detail page images
+Place the files in `img/portfolio/your-project-slug/` following the convention above (`header.*` + numbered gallery images).
 
 **Recommended sizes:**
-- Thumbnail: 800×600px, JPEG, under 200 KB
-- Detail images: 1600×900px (or 1200×900px), JPEG, under 500 KB
+- Header / card: landscape, JPEG/PNG, ideally ~1600×900 or larger, under ~400 KB.
+- Gallery images: 1280×720 (16:9) reads best in the viewer. Under ~500 KB each.
 
-### How the URL is generated
+---
 
-A file named `_projects/skullcrusher.md` becomes `https://MissaelPonce.github.io/projects/skullcrusher/`. This is set by `permalink: /projects/:name/` in `_config.yml` — don't change it.
+## The project media viewer (how the gallery works)
+
+Detail pages use a **media viewer**: one large stage that shows the current image/video, left/right arrows, and a thumbnail strip below. Clicking the large media (or a thumbnail) opens an enlarged **lightbox modal** (close with the X, click outside, or Esc). It's all driven by `js/media-viewer.js` + the `.media-*` styles in `_sass/_base.scss`.
+
+**Media order in the viewer:** `header` image first → `images:` (in order) → `videos:` (in order).
+
+### Adding videos to a gallery
+
+Add a `videos:` list to the front matter (alongside `images:`):
+
+```yaml
+videos:
+  - src: "img/portfolio/your-project-slug/clip.mp4"
+    poster: "img/portfolio/your-project-slug/clip-poster.jpg"   # optional still frame
+    alt: "Short description of the clip"
+```
+
+In the viewer a video shows its poster with a ▶ badge; clicking it opens the modal where it plays (muted, with controls). Compress clips with ffmpeg first (see the hero-video section for the command).
+
+### Hiding the card image on a specific project page
+
+By default the `header` (card) image is the first gallery item. To **omit it** on a particular detail page (e.g. when the card is a logo you don't want repeated, or the project should show only a build), add:
+
+```yaml
+hide_card_in_gallery: true
+```
+
+Currently used on CyberSchijf, GamePoint, and Colorblind Test.
 
 ---
 
@@ -84,19 +129,18 @@ A file named `_projects/skullcrusher.md` becomes `https://MissaelPonce.github.io
 
 | What to change | Where to edit |
 |---|---|
-| Card summary or tags | `_data/projects.yml` — find entry by `slug` |
-| Detail page text | `_projects/{slug}.md` — edit the Markdown body |
-| Thumbnail | Replace `img/projects/{slug}-thumb.jpg` (same filename = no other changes needed) |
-| Detail images | Edit the `images:` list in `_projects/{slug}.md` front matter |
+| Card summary, tags, period | `_data/projects.yml` (find entry by `slug`) |
+| Detail page text | `_projects/{slug}.md` (Markdown body) |
+| Card / header image | Replace `img/portfolio/{slug}/header.*` (same filename = no other change needed) |
+| Gallery images | Edit the `images:` list in `_projects/{slug}.md` front matter |
+| Gallery videos | Edit the `videos:` list in `_projects/{slug}.md` front matter |
 | Link buttons | Edit the `links:` list in `_projects/{slug}.md` front matter |
 
 ---
 
 ## Adding collaborators to a project
 
-Collaborators appear on the project detail page only — not on the homepage card.
-
-Open `_projects/{slug}.md` and add a `collaborators:` block to the front matter (alongside `images:` and `links:`):
+Collaborators appear on the detail page only. Add a `collaborators:` block to the front matter:
 
 ```yaml
 collaborators:
@@ -108,34 +152,64 @@ collaborators:
     url: ""
 ```
 
-`name` is required. `role` and `url` are optional — omit or leave blank. If `url` is provided the name links out; otherwise it's plain text. Remove the `collaborators:` block entirely (or leave it commented out) if there are no collaborators — the section is hidden automatically.
+`name` is required; `role` and `url` are optional. If `url` is blank the name is plain text. Remove the block entirely if there are no collaborators; the section hides automatically.
 
 ---
 
-## Adding a work experience entry
+## The hero background videos
 
-Open `_data/experience.yml` and prepend to the `work:` list (most recent first):
+The homepage hero plays two looping clips in sequence (`header-video-1.mp4` → `header-video-2.mp4` → repeat), with `img/header/poster.jpg` as the still fallback (shown on `prefers-reduced-motion` and before the video loads). Logic is in `js/hero-video.js`; the `<video>` element is in `_includes/header.html`.
 
-```yaml
-work:
-  - role: "Job Title"
-    company: "Company Name"
-    location: "City, Country"
-    period: "Month Year – Month Year"
-    highlights:
-      - "First responsibility or achievement."
-      - "Second responsibility or achievement."
-```
+### Swapping the hero videos
 
-To add an education entry, use the `education:` list at the bottom of the same file:
+1. Drop your new clips in `img/header/` and reference them in `_includes/header.html` via the `data-src1` / `data-src2` attributes (these map to `dataset.src1` / `dataset.src2` in the JS — keep the **no-hyphen-before-digit** naming).
+2. **Always compress before committing.** Raw renders are huge; GitHub Pages has a soft repo-size budget. Targets used here were ~1–2 MB per clip at 720p:
 
-```yaml
-education:
-  - degree: "Degree or Qualification Name"
-    institution: "School or University"
-    location: "City, Country"
-    period: "Sep 20XX – May 20XX"
-```
+   ```bash
+   ffmpeg -i input.mp4 -vf "scale=-2:720" -c:v libx264 -preset slow -crf 26 \
+          -pix_fmt yuv420p -an -movflags +faststart output.mp4
+   ```
+3. Regenerate the poster from a frame:
+
+   ```bash
+   ffmpeg -ss 00:00:01 -i header-video-1.mp4 -vframes 1 -q:v 3 img/header/poster.jpg
+   ```
+
+(There's no system ffmpeg on this machine; the dev tooling uses the `ffmpeg-static` npm package — `node -e "console.log(require('ffmpeg-static'))"` prints the binary path.)
+
+---
+
+## Deploying a Unity WebGL build (e.g. Colorblind Test)
+
+Playable builds live under `games/{slug}/` and are embedded with an `<iframe>` on the project page.
+
+1. Export the Unity WebGL build **with "Decompression Fallback" enabled** (so the `.unityweb` files load on a static host like GitHub Pages without server headers).
+2. Copy the whole build folder to `games/{slug}/` (it needs `index.html`, `Build/`, `TemplateData/`, `StreamingAssets/`).
+3. For a responsive embed, make sure the build's `index.html` lets the canvas fill its container (the Colorblind build has a small `<style>` override + `canvas.style.width/height = "100%"` for this).
+4. On the project page, embed it:
+
+   ```html
+   <iframe src="{{ site.baseurl }}/games/{slug}/index.html"
+           class="webgl-embed" loading="lazy" allowfullscreen
+           title="Project playable build"></iframe>
+   ```
+
+`keep_files: [games]` in `_config.yml` stops Jekyll from wiping the `games/` output. Builds are large (the Colorblind `.wasm` is ~10 MB); keep an eye on total repo size.
+
+---
+
+## Editing the legal pages & phone number
+
+- **Terms / Privacy:** edit `terms.md` and `privacy.md` (Markdown bodies). They use the `legal` layout and are linked from the footer.
+- **Phone number:** set once in `_config.yml` (`phone:`). It's referenced as `{{ site.phone }}` in the Contact section and the legal pages' contact info. (It was intentionally removed from the footer.)
+- **Email / LinkedIn / GitHub:** also in `_config.yml` (`email`, `linkedin_username`, `github_username`).
+
+---
+
+## Writing-style conventions
+
+- **No em-dashes (`—`) in body text.** Use commas, colons, parentheses, or separate sentences instead. (Titles and section headings are exempt, but the site currently avoids them there too.)
+- **No double spaces** between words or sentences.
 
 ---
 
@@ -154,19 +228,7 @@ Open `_data/skills.yml`.
     - Your New Skill       # ← add here
 ```
 
-**Add a new group** — copy a full block and add it to the `groups:` list:
-
-```yaml
-- category: "New Group Name"
-  icon: "fa-puzzle-piece"  # Font Awesome 4 icon class
-  skills:
-    - Skill One
-    - Skill Two
-```
-
-Browse Font Awesome 4 icons at: https://fontawesome.com/v4/icons/
-
-**Add a soft skill** — edit the `soft_skills:` list at the bottom of the file.
+**Add a new group** — copy a full block and add it to the `groups:` list. Browse Font Awesome 4 icons at https://fontawesome.com/v4/icons/ . **Add a soft skill** via the `soft_skills:` list at the bottom of the file.
 
 ---
 
@@ -175,134 +237,74 @@ Browse Font Awesome 4 icons at: https://fontawesome.com/v4/icons/
 The logo path is set in `_config.yml`:
 
 ```yaml
-logo: "img/logo/logo mp-02.svg"
+logo: "img/logo/logo_mp-02.png"
 ```
 
-To use a different file: replace the image at that path, or update the `logo:` value to the new filename. The logo is referenced in `_includes/nav.html` as `{{ site.logo }}` — no other file needs changing.
+To use a different file, replace the image at that path or update `logo:` to the new filename. It's referenced as `{{ site.logo }}` in `_includes/nav.html` and `_includes/footer.html`; no other file needs changing.
 
-**Size guidance:** SVG logos scale to any size. Aim for the logo to read clearly at 32–40px height. If using PNG, export at 2× (e.g. 80px tall source for 40px display) for retina screens.
-
-**Note on the current SVG filename:** `logo mp-02.svg` has a space in the name. If the logo fails to load in any browser, rename the file to `logo-mp-02.svg` and update `_config.yml` to match. Spaces in filenames can cause URL encoding issues on some servers.
-
----
-
-## Swapping the hero placeholder image → Blender video
-
-When your Blender render video is ready, the swap is a one-file change in `_includes/header.html`.
-
-**Current markup:**
-```html
-<header>
-    <div class="header-content">
-        ...
-    </div>
-</header>
-```
-
-**Replace with:**
-```html
-<header>
-    <video class="hero-video" autoplay muted loop playsinline
-           poster="img/header.jpg">
-        <source src="img/hero.mp4" type="video/mp4">
-        <source src="img/hero.webm" type="video/webm">
-    </video>
-    <div class="header-content">
-        ...
-    </div>
-</header>
-```
-
-The `poster` attribute is the fallback image shown on mobile or slow connections before the video loads — keep `img/header.jpg` as the poster (or update the path to a better still frame).
-
-Also remove the `background-image` line from the `header` rule in `_sass/_base.scss` — the video takes its place.
-
-**Video export guidance:** Export from Blender as MP4 (H.264, web-optimised). Add a WebM version as a second `<source>` for broader browser support. Target under 5–8 MB for a looping hero clip. Use Handbrake or `ffmpeg` to compress.
+**Sizes used:** navbar logo 48px tall, footer logo 64px tall (set in `_sass/_base.scss` as `.nav-logo` / `.footer-logo`). If you change the navbar logo height, keep the navbar `min-height` (72px) and the `.navbar-brand` height in sync so the bottom border never overlaps the logo. Export PNGs at ~2× the display height for retina sharpness.
 
 ---
 
 ## Changing the colour palette
 
-All colour values are defined in `_sass/_variables.scss`:
+All colour values live in `_sass/_variables.scss`:
 
 ```scss
 $color-bg:        #0D1321;   // page background
-$color-surface:   #1D2D44;   // cards, alternate sections
+$color-surface:   #1D2D44;   // cards, About & Contact sections
 $color-accent:    #3E5C76;   // primary buttons, hover overlays
-$color-highlight: #748CAB;   // links, muted text, highlights
+$color-highlight: #748CAB;   // links, highlights
 $color-text:      #F0EBD8;   // headings and body text
 $color-muted:     #748CAB;   // secondary / muted text
 ```
 
-Change a value here and it propagates everywhere that variable is used. You don't need to search through `_base.scss`.
-
-**Important:** After changing `_config.yml`, you must restart `jekyll serve`. SCSS changes hot-reload automatically (no restart needed).
+Change a value here and it propagates everywhere that variable is used.
 
 ---
 
 ## Updating the copyright name in the footer
 
-Open `_includes/footer.html` and find:
-
-```html
-&copy; {{ site.time | date: '%Y' }} Missael Ponce. All rights reserved.
-```
-
-Change `Missael Ponce` to whatever you want. The year is generated automatically by Liquid at build time — it updates on every deploy with no manual change needed.
+Open `_includes/footer.html` and change `{{ site.title }}` / the name in the `&copy;` line. The year is generated automatically by Liquid at build time.
 
 ---
 
 ## Local preview
 
-**One-time setup (after Ruby + Bundler are installed):**
 ```powershell
-bundle install
-```
-
-**Start the local server:**
-```powershell
+bundle install          # one-time, after Ruby + Bundler are installed
 bundle exec jekyll serve
 ```
 
-Open http://localhost:4000. Jekyll watches for file changes and rebuilds automatically — except `_config.yml` changes, which require a server restart (Ctrl+C, then run the command again).
+Open http://localhost:4000 . Jekyll watches for changes and rebuilds automatically, **except** `_config.yml` changes, which require a restart (Ctrl+C, then run the command again).
 
-**If you get a Liquid error** in the terminal, it will name the file and line number. Fix the typo and Jekyll rebuilds.
-
-**If the site looks broken locally** but works on GitHub Pages (or vice versa), the most common cause is a path or `baseurl` mismatch. For the personal page setup (`MissaelPonce.github.io`), `baseurl` in `_config.yml` must be `""` (empty string).
+If the site looks broken locally but fine on GitHub Pages (or vice versa), the usual cause is a `baseurl` mismatch. For `MissaelPonce.github.io`, `baseurl` must be `""`.
 
 ---
 
 ## Deploying via GitHub Desktop
 
-1. Make changes locally
-2. Open GitHub Desktop — changed files appear in the left panel
-3. Write a short commit message (e.g. `Add Skullcrusher project page`)
-4. Click **Commit to main**
-5. Click **Push origin**
+1. Make changes locally and preview them.
+2. Open GitHub Desktop; changed files appear in the left panel.
+3. Write a short commit message (e.g. `Add new project page`).
+4. Click **Commit to main**, then **Push origin**.
 
-GitHub Pages detects the push and rebuilds automatically. Allow 1–2 minutes. Check `https://MissaelPonce.github.io` to confirm the build succeeded. If it fails, GitHub will send you an email — the most common causes are YAML syntax errors or a Liquid tag typo.
+GitHub Pages rebuilds automatically (allow 1–2 minutes). If it fails, GitHub emails you; the usual causes are YAML syntax errors or a Liquid typo.
 
 ---
 
 ## Jekyll gotchas
 
-**`_config.yml` changes require a server restart.**
-Hot-reload does not apply to `_config.yml`. Stop Jekyll (Ctrl+C) and re-run `bundle exec jekyll serve` after any change to that file.
+**`_config.yml` changes require a server restart.** Hot-reload doesn't apply to it.
 
-**YAML is whitespace-sensitive — use 2-space indentation, never tabs.**
-If you get a build error pointing at a data file, check that all list items use the same indentation and that strings containing colons are quoted (`"Oct 2025 – Apr 2026"` not `Oct 2025 – Apr 2026`).
+**YAML is whitespace-sensitive — 2 spaces, never tabs.** Quote strings containing colons or en-dashes (`"Oct 2025 – Apr 2026"`).
 
-**SCSS partials must not have front matter.**
-Only `css/main.scss` has the `---` block at the top. Files in `_sass/` (`_variables.scss`, `_base.scss`, etc.) must not have `---` — adding it to a partial will break the SCSS build.
+**SCSS partials must not have front matter.** Only `css/main.scss` has the `---` block. Files in `_sass/` must not.
 
-**Liquid tags only work in files with front matter.**
-A plain `.html` or `.md` file without a `---` block won't process Liquid. If you create a new include or layout and Liquid variables aren't rendering, add an empty front matter block at the top.
+**Liquid only runs in files with front matter.** A new include/layout won't render Liquid unless it has a `---` block (or is included by a file that does).
 
-**Don't edit `_site/` directly.**
-Jekyll overwrites the entire `_site/` folder on every build. Any direct edits there are lost immediately.
+**Don't edit `_site/` directly.** It's overwritten on every build.
 
-**GitHub Pages uses Jekyll 3.x.**
-Some Jekyll 4 features don't work on GitHub Pages. Everything in this site is Jekyll 3-compatible. If you ever want to use Jekyll 4 features, you'd need to add a GitHub Actions workflow instead of relying on the built-in Pages build — that's a significant change, so flag it before attempting.
+**GitHub Pages uses Jekyll 3.x.** Everything here is Jekyll 3-compatible. Using Jekyll 4 features would require a GitHub Actions workflow instead of the built-in Pages build.
 
-**The `_projects/` collection has `output: false` until Phase 4.**
-Until the `layout: project` template is built and `output: true` is set in `_config.yml`, `_projects/*.md` files are content waiting to be wired up — they won't generate individual pages yet.
+**Dev-only tooling is git-ignored / excluded.** `node_modules/`, `tests/`, `assets-src/`, and `ColorBlindBuild/` (the original build drop) are excluded from the Jekyll output and ignored by git. The Playwright QA scripts live in `tests/`.

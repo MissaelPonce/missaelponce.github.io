@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const p = await (await b.newContext({viewport:{width:1280,height:900}})).newPage();
+const errs=[]; p.on('console',m=>m.type()==='error'&&errs.push(m.text())); p.on('pageerror',e=>errs.push('PE:'+e.message));
+const r=[]; p.on('response',x=>{if(x.status()>=400)r.push(x.status()+' '+x.url())});
+await p.goto('http://localhost:4000/projects/cyberschijf-van-vijf/',{waitUntil:'networkidle'});
+await p.waitForTimeout(500);
+const h = await p.evaluate(()=>({heads:[...document.querySelectorAll('.project-content h2')].map(h=>h.textContent.trim()), slides:document.querySelectorAll('.media-slide').length}));
+console.log('errors='+errs.length, '4xx='+r.length, JSON.stringify(h));
+await b.close();

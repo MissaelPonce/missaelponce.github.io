@@ -65,14 +65,80 @@
       </div>
       {% endif %}
 
-      <!-- Screenshots -->
-      {% if page.images and page.images.size > 0 %}
-      <div class="row project-images">
-        {% for image in page.images %}
-        <div class="col-lg-{% if page.images.size == 1 %}10 col-lg-offset-1{% elsif page.images.size == 2 %}6{% else %}4{% endif %} col-sm-6">
-          <img src="{{ site.baseurl }}/{{ image.src }}" alt="{{ image.alt }}" class="img-responsive project-img">
+      <!-- Media viewer: large stage + thumbnail strip + click-to-zoom modal.
+           Order: card/header image first (unless hidden), then screenshots, then videos. -->
+      {% comment %} Decide whether the card image leads the gallery {% endcomment %}
+      {% assign lead = false %}
+      {% unless page.hide_card_in_gallery %}{% if page.thumbnail %}{% assign lead = true %}{% endif %}{% endunless %}
+      {% assign total = page.images | size | plus: page.videos.size %}
+      {% if lead %}{% assign total = total | plus: 1 %}{% endif %}
+
+      {% if total > 0 %}
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="media-viewer" data-count="{{ total }}">
+            <div class="media-stage">
+              {% if total > 1 %}<button type="button" class="media-arrow media-prev" aria-label="Previous">&#8249;</button>{% endif %}
+              <div class="media-frame">
+                {% assign idx = 0 %}
+                {% if lead %}
+                <figure class="media-slide is-active" data-index="{{ idx }}" data-type="image">
+                  <img class="media-el" src="{{ site.baseurl }}/{{ page.thumbnail }}" alt="{{ page.title }}" loading="lazy">
+                </figure>
+                {% assign idx = idx | plus: 1 %}
+                {% endif %}
+                {% for image in page.images %}
+                <figure class="media-slide{% if idx == 0 %} is-active{% endif %}" data-index="{{ idx }}" data-type="image">
+                  <img class="media-el" src="{{ site.baseurl }}/{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+                </figure>
+                {% assign idx = idx | plus: 1 %}
+                {% endfor %}
+                {% for video in page.videos %}
+                <figure class="media-slide{% if idx == 0 %} is-active{% endif %}" data-index="{{ idx }}" data-type="video">
+                  <video class="media-el" src="{{ site.baseurl }}/{{ video.src }}"{% if video.poster %} poster="{{ site.baseurl }}/{{ video.poster }}"{% endif %} muted playsinline preload="metadata" aria-label="{{ video.alt }}"></video>
+                  <span class="media-play-badge" aria-hidden="true">&#9658;</span>
+                </figure>
+                {% assign idx = idx | plus: 1 %}
+                {% endfor %}
+              </div>
+              {% if total > 1 %}<button type="button" class="media-arrow media-next" aria-label="Next">&#8250;</button>{% endif %}
+            </div>
+
+            {% if total > 1 %}
+            <div class="media-thumbs">
+              {% assign tidx = 0 %}
+              {% if lead %}
+              <button type="button" class="media-thumb is-active" data-index="{{ tidx }}" aria-label="View image 1">
+                <img src="{{ site.baseurl }}/{{ page.thumbnail }}" alt="" loading="lazy">
+              </button>
+              {% assign tidx = tidx | plus: 1 %}
+              {% endif %}
+              {% for image in page.images %}
+              <button type="button" class="media-thumb{% if tidx == 0 %} is-active{% endif %}" data-index="{{ tidx }}" aria-label="View image">
+                <img src="{{ site.baseurl }}/{{ image.src }}" alt="" loading="lazy">
+              </button>
+              {% assign tidx = tidx | plus: 1 %}
+              {% endfor %}
+              {% for video in page.videos %}
+              <button type="button" class="media-thumb is-video{% if tidx == 0 %} is-active{% endif %}" data-index="{{ tidx }}" aria-label="View video">
+                {% if video.poster %}<img src="{{ site.baseurl }}/{{ video.poster }}" alt="" loading="lazy">{% endif %}
+                <span class="media-thumb-play" aria-hidden="true">&#9658;</span>
+              </button>
+              {% assign tidx = tidx | plus: 1 %}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
         </div>
-        {% endfor %}
+      </div>
+
+      <!-- Enlarged preview modal (shared by this page's media viewer) -->
+      <div class="media-modal" hidden>
+        <div class="media-modal-backdrop"></div>
+        <button type="button" class="media-modal-close" aria-label="Close">&times;</button>
+        {% if total > 1 %}<button type="button" class="media-arrow media-modal-prev" aria-label="Previous">&#8249;</button>{% endif %}
+        <div class="media-modal-stage" role="dialog" aria-modal="true" aria-label="Media preview"></div>
+        {% if total > 1 %}<button type="button" class="media-arrow media-modal-next" aria-label="Next">&#8250;</button>{% endif %}
       </div>
       {% endif %}
 

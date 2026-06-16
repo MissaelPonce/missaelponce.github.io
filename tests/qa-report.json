@@ -1,0 +1,1067 @@
+[
+  {
+    "page": "home",
+    "bp": "mobile",
+    "file": "tests/screenshots/home-mobile.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": true,
+      "w": 375,
+      "h": 463,
+      "hasSrc": true,
+      "currentSrc": "http://localhost:4000/img/header/header-video-1.mp4",
+      "paused": false,
+      "readyState": 4,
+      "videoW": 1280,
+      "videoH": 720,
+      "objectFit": "cover"
+    },
+    "gallery": [],
+    "cards": [
+      {
+        "src": "/img/portfolio/isometric-room/header.png",
+        "w": 375,
+        "h": 211,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/dark-forest/header.png",
+        "w": 375,
+        "h": 211,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/header.jpg",
+        "w": 375,
+        "h": 211,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/skullcrusher/header.gif",
+        "w": 375,
+        "h": 211,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/colorblind-test/header.png",
+        "w": 375,
+        "h": 211,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/cyberschijf-van-vijf/header.png",
+        "w": 375,
+        "h": 211,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/gamepoint-liveops/header.webp",
+        "w": 375,
+        "h": 211,
+        "fit": "contain"
+      }
+    ],
+    "centering": [
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 0,
+        "rightGap": 0,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": ".header-content-inner",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 0,
+        "rightGap": 0,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 163,
+        "rightGap": 163,
+        "offCenter": false
+      }
+    ]
+  },
+  {
+    "page": "project-isometric",
+    "bp": "mobile",
+    "file": "tests/screenshots/project-isometric-mobile.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": false
+    },
+    "gallery": [
+      {
+        "src": "/img/portfolio/isometric-room/header.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/isometric-room/01.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      }
+    ],
+    "cards": [],
+    "centering": [
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 0,
+        "rightGap": 0,
+        "offCenter": false
+      },
+      {
+        "sel": ".project-title",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      }
+    ]
+  },
+  {
+    "page": "project-metaverse",
+    "bp": "mobile",
+    "file": "tests/screenshots/project-metaverse-mobile.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": false
+    },
+    "gallery": [
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/header.jpg",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/09.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/07.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/02.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/04.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/15.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/12.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/16.png",
+        "w": 343,
+        "h": 192,
+        "fit": "contain"
+      }
+    ],
+    "cards": [],
+    "centering": [
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 0,
+        "rightGap": 0,
+        "offCenter": false
+      },
+      {
+        "sel": ".project-title",
+        "offset": 0,
+        "leftGap": 15,
+        "rightGap": 15,
+        "offCenter": false
+      }
+    ]
+  },
+  {
+    "page": "home",
+    "bp": "tablet",
+    "file": "tests/screenshots/home-tablet.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": true,
+      "w": 768,
+      "h": 1024,
+      "hasSrc": true,
+      "currentSrc": "http://localhost:4000/img/header/header-video-1.mp4",
+      "paused": false,
+      "readyState": 4,
+      "videoW": 1280,
+      "videoH": 720,
+      "objectFit": "cover"
+    },
+    "gallery": [],
+    "cards": [
+      {
+        "src": "/img/portfolio/isometric-room/header.png",
+        "w": 384,
+        "h": 216,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/dark-forest/header.png",
+        "w": 384,
+        "h": 216,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/header.jpg",
+        "w": 384,
+        "h": 216,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/skullcrusher/header.gif",
+        "w": 384,
+        "h": 216,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/colorblind-test/header.png",
+        "w": 384,
+        "h": 216,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/cyberschijf-van-vijf/header.png",
+        "w": 384,
+        "h": 216,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/gamepoint-liveops/header.webp",
+        "w": 384,
+        "h": 216,
+        "fit": "contain"
+      }
+    ],
+    "centering": [
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 0,
+        "rightGap": 0,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": ".header-content-inner",
+        "offset": 0,
+        "leftGap": 50,
+        "rightGap": 50,
+        "offCenter": false
+      },
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 9,
+        "rightGap": 9,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 359,
+        "rightGap": 359,
+        "offCenter": false
+      }
+    ]
+  },
+  {
+    "page": "project-isometric",
+    "bp": "tablet",
+    "file": "tests/screenshots/project-isometric-tablet.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": false
+    },
+    "gallery": [
+      {
+        "src": "/img/portfolio/isometric-room/header.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/isometric-room/01.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      }
+    ],
+    "cards": [],
+    "centering": [
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 9,
+        "rightGap": 9,
+        "offCenter": false
+      },
+      {
+        "sel": ".project-title",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      }
+    ]
+  },
+  {
+    "page": "project-metaverse",
+    "bp": "tablet",
+    "file": "tests/screenshots/project-metaverse-tablet.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": false
+    },
+    "gallery": [
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/header.jpg",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/09.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/07.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/02.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/04.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/15.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/12.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/16.png",
+        "w": 348,
+        "h": 195,
+        "fit": "contain"
+      }
+    ],
+    "cards": [],
+    "centering": [
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 9,
+        "rightGap": 9,
+        "offCenter": false
+      },
+      {
+        "sel": ".project-title",
+        "offset": 0,
+        "leftGap": 24,
+        "rightGap": 24,
+        "offCenter": false
+      }
+    ]
+  },
+  {
+    "page": "home",
+    "bp": "desktop",
+    "file": "tests/screenshots/home-desktop.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": true,
+      "w": 1280,
+      "h": 900,
+      "hasSrc": true,
+      "currentSrc": "http://localhost:4000/img/header/header-video-1.mp4",
+      "paused": false,
+      "readyState": 4,
+      "videoW": 1280,
+      "videoH": 720,
+      "objectFit": "cover"
+    },
+    "gallery": [],
+    "cards": [
+      {
+        "src": "/img/portfolio/isometric-room/header.png",
+        "w": 427,
+        "h": 240,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/dark-forest/header.png",
+        "w": 427,
+        "h": 240,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/header.jpg",
+        "w": 427,
+        "h": 240,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/skullcrusher/header.gif",
+        "w": 427,
+        "h": 240,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/colorblind-test/header.png",
+        "w": 427,
+        "h": 240,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/cyberschijf-van-vijf/header.png",
+        "w": 427,
+        "h": 240,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/gamepoint-liveops/header.webp",
+        "w": 427,
+        "h": 240,
+        "fit": "contain"
+      }
+    ],
+    "centering": [
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 265,
+        "rightGap": 265,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 70,
+        "rightGap": 70,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 0,
+        "rightGap": 0,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 70,
+        "rightGap": 70,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 70,
+        "rightGap": 70,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading",
+        "offset": 0,
+        "leftGap": 265,
+        "rightGap": 265,
+        "offCenter": false
+      },
+      {
+        "sel": ".header-content-inner",
+        "offset": 0,
+        "leftGap": 140,
+        "rightGap": 140,
+        "offCenter": false
+      },
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 55,
+        "rightGap": 55,
+        "offCenter": false
+      },
+      {
+        "sel": ".contact-link",
+        "offset": -439,
+        "leftGap": 70,
+        "rightGap": 948,
+        "offCenter": true
+      },
+      {
+        "sel": ".contact-link",
+        "offset": -146,
+        "leftGap": 363,
+        "rightGap": 655,
+        "offCenter": true
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 146,
+        "leftGap": 655,
+        "rightGap": 363,
+        "offCenter": true
+      },
+      {
+        "sel": ".contact-link",
+        "offset": 439,
+        "leftGap": 948,
+        "rightGap": 70,
+        "offCenter": true
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      },
+      {
+        "sel": "hr.primary",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      },
+      {
+        "sel": ".section-heading + hr",
+        "offset": 0,
+        "leftGap": 615,
+        "rightGap": 615,
+        "offCenter": false
+      }
+    ]
+  },
+  {
+    "page": "project-isometric",
+    "bp": "desktop",
+    "file": "tests/screenshots/project-isometric-desktop.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": false
+    },
+    "gallery": [
+      {
+        "src": "/img/portfolio/isometric-room/header.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/isometric-room/01.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      }
+    ],
+    "cards": [],
+    "centering": [
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 55,
+        "rightGap": 55,
+        "offCenter": false
+      },
+      {
+        "sel": ".project-title",
+        "offset": 0,
+        "leftGap": 168,
+        "rightGap": 168,
+        "offCenter": false
+      }
+    ]
+  },
+  {
+    "page": "project-metaverse",
+    "bp": "desktop",
+    "file": "tests/screenshots/project-metaverse-desktop.png",
+    "consoleErrors": [],
+    "logo": {
+      "found": true,
+      "w": 36,
+      "h": 36,
+      "visible": true,
+      "naturalW": 2499,
+      "naturalH": 2499,
+      "complete": true
+    },
+    "video": {
+      "found": false
+    },
+    "gallery": [
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/header.jpg",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/09.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/07.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/02.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/04.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/15.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/12.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      },
+      {
+        "src": "/img/portfolio/metaverse-hispanic-talent/16.png",
+        "w": 461,
+        "h": 258,
+        "fit": "contain"
+      }
+    ],
+    "cards": [],
+    "centering": [
+      {
+        "sel": "footer .container",
+        "offset": 0,
+        "leftGap": 55,
+        "rightGap": 55,
+        "offCenter": false
+      },
+      {
+        "sel": ".project-title",
+        "offset": 0,
+        "leftGap": 168,
+        "rightGap": 168,
+        "offCenter": false
+      }
+    ]
+  }
+]

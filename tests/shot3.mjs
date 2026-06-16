@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const p = await (await b.newContext({viewport:{width:1280,height:1000}})).newPage();
+await p.goto('http://localhost:4000/projects/metaverse-hispanic-talent/', {waitUntil:'networkidle'});
+await p.waitForTimeout(600);
+const counts = await p.evaluate(()=>({slides:document.querySelectorAll('.media-slide').length, thumbs:document.querySelectorAll('.media-thumb').length}));
+console.log('METAVERSE media:', JSON.stringify(counts));
+const v = await p.$('.media-viewer'); await v.scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
+await p.screenshot({path:'tests/screenshots/r4-metaverse-viewer.png'});
+await b.close();

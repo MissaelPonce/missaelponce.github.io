@@ -8,19 +8,25 @@
             </div>
         </div>
         <div class="row" style="margin-top: 40px;">
-            <div class="col-lg-4 col-md-4 text-center reveal-on-scroll">
+            <div class="col-lg-3 col-md-6 text-center reveal-on-scroll">
                 <a href="mailto:{{ site.email }}" class="contact-link">
                     <i class="fa fa-envelope-o fa-3x"></i>
                     <p>{{ site.email }}</p>
                 </a>
             </div>
-            <div class="col-lg-4 col-md-4 text-center reveal-on-scroll" style="--reveal-delay: 80ms">
+            <div class="col-lg-3 col-md-6 text-center reveal-on-scroll" style="--reveal-delay: 80ms">
+                <a href="tel:{{ site.phone | remove: '(' | remove: ')' | remove: ' ' }}" class="contact-link">
+                    <i class="fa fa-phone fa-3x"></i>
+                    <p>{{ site.phone }}</p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center reveal-on-scroll" style="--reveal-delay: 160ms">
                 <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="contact-link">
                     <i class="fa fa-linkedin fa-3x"></i>
                     <p>LinkedIn</p>
                 </a>
             </div>
-            <div class="col-lg-4 col-md-4 text-center reveal-on-scroll" style="--reveal-delay: 160ms">
+            <div class="col-lg-3 col-md-6 text-center reveal-on-scroll" style="--reveal-delay: 240ms">
                 <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="contact-link">
                     <i class="fa fa-github fa-3x"></i>
                     <p>{{ site.github_username }}</p>

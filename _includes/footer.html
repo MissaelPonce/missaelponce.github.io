@@ -1,5 +1,11 @@
 <footer>
     <div class="container text-center">
+        <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.title }}" class="footer-logo">
+        <p class="footer-legal">
+            <a href="{{ site.baseurl }}/terms/">Terms of Service</a>
+            <span class="footer-divider">&middot;</span>
+            <a href="{{ site.baseurl }}/privacy/">Privacy Policy</a>
+        </p>
         <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
     </div>
 </footer>

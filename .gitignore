@@ -404,3 +404,27 @@ FodyWeavers.xsd
 _site/
 .jekyll-cache/
 .jekyll-metadata
+
+# Node tooling (dev-only: Playwright QA + ffmpeg-static asset prep)
+node_modules/
+package.json
+package-lock.json
+
+# Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Playwright QA artifacts
+tests/screenshots/
+playwright-report/
+test-results/
+
+# Large source media backups (keep out of repo)
+assets-src/
+
+# Original Unity build drop (deployed copy lives in games/colorblind-test/)
+ColorBlindBuild/
+
+# Personal working notes / CV (never publish)
+Context/
