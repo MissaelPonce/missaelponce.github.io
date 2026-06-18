@@ -36,11 +36,11 @@ links:
 
 Cooperative 3D horror game developed as a university project at Institut Tecnològic de Barcelona, built in Unity by a team of three. My primary responsibilities were AI programming, environment design, and lighting.
 
-## AI Programming — Zombies
+## Enemy AI — Zombies
 
 Designed and implemented the zombie AI system: detection ranges, state transitions (idle, patrol, chase, attack), and tuned parameters to create behaviour that felt threatening without feeling scripted. The goal was challenge without frustration: enemies that respond believably to the player, but that can be read and countered.
 
-## AI Programming — Final Boss
+## Enemy AI — Final Boss
 
 Designed and programmed the final boss as the climax of the experience. The boss uses a phased behaviour pattern with escalating aggression, signalling clearly to the player that this is a different type of encounter. Building a fair but punishing confrontation at the end of the game required balancing difficulty, pacing, and player agency across multiple playthroughs.
 
