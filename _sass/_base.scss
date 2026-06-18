@@ -97,56 +97,6 @@ aside {
     color: $color-muted;
 }
 
-// ─── About: value-proposition blocks ─────────────────────────────────────────
-
-.about-values {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-    margin-top: 12px;
-    text-align: left;
-
-    @media (max-width: 767px) {
-        grid-template-columns: 1fr;
-    }
-}
-
-.value-block {
-    background: $color-bg;
-    border: 1px solid rgba($color-accent, 0.3);
-    border-radius: 8px;
-    padding: 28px 26px;
-    @include transition-all;
-
-    &:hover {
-        border-color: rgba($color-highlight, 0.6);
-        transform: translateY(-3px);
-    }
-}
-
-.value-icon {
-    display: block;
-    font-size: 28px;
-    color: $color-highlight;
-    margin-bottom: 14px;
-}
-
-.value-title {
-    @include heading-font;
-    font-size: 19px;
-    font-weight: 700;
-    color: $color-text;
-    margin: 0 0 10px;
-}
-
-.value-body {
-    font-family: $font-body;
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: rgba($color-text, 0.72);
-    margin: 0;
-}
-
 // ─── Navigation ──────────────────────────────────────────────────────────────
 
 .navbar-default {
@@ -1381,63 +1331,6 @@ body.media-modal-open { overflow: hidden; }
         text-decoration: none;
         transform: translateY(-2px);
         outline: none;
-    }
-}
-
-// ─── Back-to-top button ──────────────────────────────────────────────────────
-
-.back-to-top {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 1040;
-    width: 46px;
-    height: 46px;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: $color-accent;
-    color: $color-text;
-    font-size: 18px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
-
-    // Hidden by default; fades in when .is-visible is added.
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: opacity 0.25s ease, visibility 0.25s ease,
-                transform 0.25s ease, background-color 0.2s ease;
-
-    &.is-visible {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    &:hover {
-        background: $color-highlight;
-        color: $color-bg;
-    }
-
-    &:focus-visible {
-        outline: 2px solid $color-highlight;
-        outline-offset: 2px;
-    }
-}
-
-// Reduced motion: instant show/hide, no slide/animation.
-@media (prefers-reduced-motion: reduce) {
-    .back-to-top {
-        transition: none;
-        transform: none;
-    }
-    .back-to-top.is-visible {
-        transform: none;
     }
 }
 
