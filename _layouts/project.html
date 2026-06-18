@@ -24,7 +24,10 @@
           {% if page.links and page.links.size > 0 %}
           <div class="project-links">
             {% for link in page.links %}
-            <a href="{{ link.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">{{ link.label }}</a>
+            <a href="{{ link.url }}" target="_blank" rel="noopener" class="project-link-btn">
+              <span>{{ link.label }}</span>
+              <i class="fa fa-external-link" aria-hidden="true"></i>
+            </a>
             {% endfor %}
           </div>
           {% endif %}

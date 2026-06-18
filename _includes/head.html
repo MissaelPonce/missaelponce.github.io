@@ -9,11 +9,21 @@
     <title>{{ site.title }} | Portfolio</title>
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} | Portfolio{% endif %}">
     <meta property="og:description" content="{{ site.description }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
     <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/img/header/poster.jpg">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+    <meta property="og:image:alt" content="{{ site.title }} portfolio">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} | Portfolio{% endif %}">
+    <meta name="twitter:description" content="{{ site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/img/header/poster.jpg">
 
     <!-- Favicon (generated from the logo, dark on-brand tile) -->
     <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico">

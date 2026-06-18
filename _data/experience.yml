@@ -2,7 +2,7 @@ work:
   - role: "Freelance Web Developer"
     company: "Independent (via Ling Jin Studio freelance contract)"
     location: "The Netherlands"
-    period: "May 2026 – Jun 2026"
+    period: "Apr 2026 – Current"
     highlights:
       - "Designed and built a production iPad web app for cybersecurity workshops, used by company clients across the Netherlands."
       - "Implemented a real-time analytics dashboard with 8 views, Chart.js visualisations, and CSV export."

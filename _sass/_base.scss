@@ -176,6 +176,28 @@ aside {
             color: $color-highlight !important;
         }
     }
+
+    // Prominent "Download CV" call-to-action in the navbar.
+    .nav > li.nav-cv > a,
+    .nav > li.nav-cv > a:focus {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 16px 0 16px 14px;
+        padding: 9px 18px;
+        border: 1px solid $color-highlight;
+        border-radius: 6px;
+        color: $color-text;
+        background: rgba($color-highlight, 0.14);
+        @include transition-all;
+
+        .fa { font-size: 13px; }
+
+        &:hover {
+            background: $color-highlight;
+            color: $color-bg;
+        }
+    }
 }
 
 // ─── Hero ────────────────────────────────────────────────────────────────────
@@ -398,7 +420,19 @@ header {
                 font-size: 18px;
                 font-weight: 700;
                 color: $color-text;
-                margin-bottom: 12px;
+                margin-bottom: 10px;
+            }
+
+            .project-card-summary {
+                font-family: $font-body;
+                font-size: 13px;
+                line-height: 1.5;
+                color: rgba($color-text, 0.82);
+                margin: 0 auto 12px;
+                max-width: 90%;
+
+                // Hide on the shortest cards so the caption never overflows.
+                @media (max-width: 480px) { display: none; }
             }
 
             .project-tags {
@@ -426,6 +460,75 @@ header {
             .project-category { font-size: 14px; }
             .project-name     { font-size: 22px; }
         }
+    }
+}
+
+// ─── Project filter bar ──────────────────────────────────────────────────────
+
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    @include heading-font;
+    background: transparent;
+    border: 1px solid rgba($color-accent, 0.55);
+    color: rgba($color-text, 0.8);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 7px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    @include transition-all;
+
+    &:hover,
+    &:focus {
+        border-color: $color-highlight;
+        color: $color-text;
+        outline: none;
+    }
+
+    &.is-active {
+        background: $color-accent;
+        border-color: $color-accent;
+        color: $color-text;
+    }
+}
+
+// ─── Project-type badge (Professional / Personal / Academic) ──────────────────
+
+.project-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+    @include heading-font;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 9px;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+
+    &--professional {
+        background: #C9A24B; // warm gold — flags real-world paid/client work
+        color: #0D1321;
+    }
+    &--personal {
+        background: $color-accent;
+        color: $color-text;
+    }
+    &--academic {
+        background: rgba($color-bg, 0.75);
+        color: rgba($color-text, 0.9);
+        border: 1px solid rgba($color-text, 0.35);
     }
 }
 
@@ -530,8 +633,18 @@ header {
     background-color: $color-surface; // match the About Me section
 }
 
+// Contact icons: flexible centered row that handles any number of links.
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px 50px;
+    margin-top: 40px;
+}
+
 .contact-link {
     display: block;
+    text-align: center;
     color: $color-muted;
     @include transition-all;
 
@@ -539,6 +652,15 @@ header {
         display: block;
         margin-bottom: 16px;
         color: $color-highlight;
+        @include transition-all;
+    }
+
+    .contact-icon-svg {
+        display: block;
+        width: 42px;
+        height: 42px;
+        margin: 0 auto 16px;
+        fill: $color-highlight;
         @include transition-all;
     }
 
@@ -555,8 +677,10 @@ header {
     &:hover {
         color: $color-text;
 
-        i.fa {
+        i.fa,
+        .contact-icon-svg {
             color: $color-text;
+            fill: $color-text;
             transform: translateY(-4px);
         }
 
@@ -723,11 +847,40 @@ footer {
 }
 
 .project-links {
-    margin-top: 8px;
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
 
-    .btn {
-        margin-right: 8px;
-        margin-bottom: 8px;
+// Prominent external-link buttons (Play on Itch.io, VRChat World, etc.)
+.project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    @include heading-font;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: $color-text;
+    background: $color-accent;
+    border: 1px solid rgba($color-highlight, 0.6);
+    border-radius: 6px;
+    padding: 12px 22px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    @include transition-all;
+
+    .fa { font-size: 14px; opacity: 0.85; }
+
+    &:hover,
+    &:focus {
+        background: $color-highlight;
+        color: $color-bg;
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        outline: none;
+        .fa { opacity: 1; }
     }
 }
 
@@ -1122,6 +1275,63 @@ body.media-modal-open { overflow: hidden; }
     color: $color-muted;
     font-size: 14px;
     margin-bottom: 16px;
+}
+
+// ─── 404 page ────────────────────────────────────────────────────────────────
+
+.error-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 120px 0 80px;
+    background-color: $color-bg;
+}
+
+.error-code {
+    @include heading-font;
+    font-size: 120px;
+    font-weight: 900;
+    line-height: 1;
+    color: $color-accent;
+    margin: 0;
+}
+
+.error-title {
+    @include heading-font;
+    font-size: 28px;
+    font-weight: 700;
+    color: $color-text;
+    margin: 12px 0 8px;
+}
+
+.error-msg {
+    color: $color-muted;
+    font-size: 16px;
+    margin-bottom: 28px;
+}
+
+.error-home-btn {
+    display: inline-block;
+    @include heading-font;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: $color-text;
+    background: $color-accent;
+    border: 1px solid rgba($color-highlight, 0.6);
+    border-radius: 6px;
+    padding: 13px 26px;
+    @include transition-all;
+
+    &:hover,
+    &:focus {
+        background: $color-highlight;
+        color: $color-bg;
+        text-decoration: none;
+        transform: translateY(-2px);
+        outline: none;
+    }
 }
 
 // ─── Utilities ───────────────────────────────────────────────────────────────

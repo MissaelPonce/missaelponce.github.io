@@ -32,6 +32,6 @@ If you have any questions about this privacy policy, contact:
 
 - Phone: {{ site.phone }}
 - Email: [{{ site.email }}](mailto:{{ site.email }})
-- LinkedIn: [{{ site.linkedin_username }}](https://linkedin.com/in/{{ site.linkedin_username }})
+- LinkedIn: [{{ site.linkedin_name }}](https://linkedin.com/in/{{ site.linkedin_username }})
 
 *Last updated: {{ site.time | date: "%B %Y" }}*

@@ -3,7 +3,7 @@ layout: project
 title: "Skullcrusher"
 category: "Unity / Game Dev"
 period: "Jan 2021 – May 2021"
-tags: [Unity, C#, AI Programming, Game Design, Level Design, Environment Art, Lighting]
+tags: [Unity, C#, Enemy AI, Game Design, Level Design, Environment Art, Lighting]
 thumbnail: "img/portfolio/skullcrusher/header.gif"
 images:
   - src: "img/portfolio/skullcrusher/01.png"

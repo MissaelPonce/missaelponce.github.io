@@ -28,6 +28,7 @@ groups:
       - Kubernetes (foundations)
       - Basic Linux administration
       - Ports configuration
+      - Computer assembly
 
   - category: "Web & Markup"
     icon: "fa-globe"
@@ -35,7 +36,6 @@ groups:
       - HTML / CSS / XML
       - Debugging & troubleshooting
       - Production tools & internal platforms
-      - Computer assembly
 
 soft_skills:
   - Problem-solving & troubleshooting mindset

@@ -7,7 +7,11 @@ baseurl:     ""
 url:         "https://missaelponce.github.io"
 
 linkedin_username: "jassir-missael-ortiz-ponce-b5478a1b8"
+linkedin_name:     "Jassir Missael Ortiz Ponce"
 github_username:   "MissaelPonce"
+gitlab_url:        "https://gitlab.com/jassir.ortiz.7e4"
+cv_file:           "assets/files/Missael_Ponce_CV_2026.pdf"
+cover_letter_file: "assets/files/Missael_Ponce_Cover_Letter_2026.pdf"
 
 # Build settings
 markdown: kramdown

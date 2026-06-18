@@ -4,34 +4,30 @@
             <div class="col-lg-8 col-lg-offset-2 text-center reveal-on-scroll">
                 <h2 class="section-heading">Get In Touch</h2>
                 <hr class="primary">
-                <p class="text-muted">Open to game development, live operations, and multiplatform development roles. Feel free to reach out via email or LinkedIn.</p>
+                <p class="text-muted">Open to game development, 2D/3D design, LiveOps / DevOps, and multiplatform development roles. Feel free to reach out via email, phone number, or LinkedIn.</p>
             </div>
         </div>
-        <div class="row" style="margin-top: 40px;">
-            <div class="col-lg-3 col-md-6 text-center reveal-on-scroll">
-                <a href="mailto:{{ site.email }}" class="contact-link">
-                    <i class="fa fa-envelope-o fa-3x"></i>
-                    <p>{{ site.email }}</p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center reveal-on-scroll" style="--reveal-delay: 80ms">
-                <a href="tel:{{ site.phone | remove: '(' | remove: ')' | remove: ' ' }}" class="contact-link">
-                    <i class="fa fa-phone fa-3x"></i>
-                    <p>{{ site.phone }}</p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center reveal-on-scroll" style="--reveal-delay: 160ms">
-                <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="contact-link">
-                    <i class="fa fa-linkedin fa-3x"></i>
-                    <p>LinkedIn</p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center reveal-on-scroll" style="--reveal-delay: 240ms">
-                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="contact-link">
-                    <i class="fa fa-github fa-3x"></i>
-                    <p>{{ site.github_username }}</p>
-                </a>
-            </div>
+        <div class="contact-grid reveal-on-scroll">
+            <a href="mailto:{{ site.email }}" class="contact-link">
+                <i class="fa fa-envelope-o fa-3x"></i>
+                <p>{{ site.email }}</p>
+            </a>
+            <a href="tel:{{ site.phone | remove: '(' | remove: ')' | remove: ' ' }}" class="contact-link">
+                <i class="fa fa-phone fa-3x"></i>
+                <p>{{ site.phone }}</p>
+            </a>
+            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="contact-link">
+                <i class="fa fa-linkedin fa-3x"></i>
+                <p>LinkedIn</p>
+            </a>
+            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="contact-link">
+                <i class="fa fa-github fa-3x"></i>
+                <p>{{ site.github_username }}</p>
+            </a>
+            <a href="{{ site.gitlab_url }}" target="_blank" rel="noopener" class="contact-link">
+                <svg class="contact-icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m23.6 9.6-.03-.08-3.3-8.6a.86.86 0 0 0-.84-.55.86.86 0 0 0-.5.2.86.86 0 0 0-.29.43L16.4 7H7.6L5.36 1a.86.86 0 0 0-.29-.43.86.86 0 0 0-1.34.35L.43 9.52l-.03.08a6.12 6.12 0 0 0 2.03 7.07l.01.01.03.02 5.02 3.76 2.49 1.88 1.51 1.15a1.01 1.01 0 0 0 1.22 0l1.51-1.15 2.49-1.88 5.05-3.78.01-.01A6.12 6.12 0 0 0 23.6 9.6Z"/></svg>
+                <p>GitLab</p>
+            </a>
         </div>
     </div>
 </section>

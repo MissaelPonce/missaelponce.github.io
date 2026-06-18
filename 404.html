@@ -1,0 +1,27 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body id="page-top" class="project-page error-page">
+
+  {% include nav.html %}
+
+  <section class="error-section">
+    <div class="container text-center">
+      <p class="error-code">404</p>
+      <h1 class="error-title">Page not found</h1>
+      <p class="error-msg">The page you're looking for doesn't exist or may have moved.</p>
+      <a href="{{ site.baseurl }}/" class="error-home-btn">&larr; Back to Portfolio</a>
+    </div>
+  </section>
+
+  {% include footer.html %}
+  {% include scripts.html %}
+
+</body>
+
+</html>

@@ -29,4 +29,4 @@ Firebase handles data, authentication, and hosting, so there is no server to mai
 
 ---
 
-*Built independently as a freelance project. Client details omitted.*
+*Built independently as a freelance project. Client details skipped.*

@@ -1,17 +1,32 @@
 <section class="no-padding" id="portfolio">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12 text-center" style="padding: 60px 0 40px;">
+            <div class="col-lg-12 text-center" style="padding: 60px 0 24px;">
                 <h2 class="section-heading">Projects</h2>
                 <hr class="primary" style="margin: 20px auto 0;">
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="project-filters" role="group" aria-label="Filter projects">
+                    <button type="button" class="filter-btn is-active" data-filter="all">All Projects</button>
+                    <button type="button" class="filter-btn" data-filter="work">Work</button>
+                    <button type="button" class="filter-btn" data-filter="personal">Personal</button>
+                    <button type="button" class="filter-btn" data-filter="unity">Unity</button>
+                    <button type="button" class="filter-btn" data-filter="blender">Blender</button>
+                    <button type="button" class="filter-btn" data-filter="webapp">Web / App</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container-fluid">
-        <div class="row portfolio-row">
+        <div class="row portfolio-row" id="portfolio-grid">
             {% for project in site.data.projects %}
-            <div class="col-lg-4 col-sm-6">
+            <div class="col-lg-4 col-sm-6 portfolio-item" data-filters="{{ project.filters }}">
                 <a href="{{ site.baseurl }}/projects/{{ project.slug }}/" class="portfolio-box reveal-on-scroll" style="--reveal-delay: {{ forloop.index0 | times: 80 }}ms">
+                    {% if project.kind %}
+                    <span class="project-badge project-badge--{{ project.kind }}">{{ project.kind | capitalize }}</span>
+                    {% endif %}
                     <img src="{{ site.baseurl }}/{{ project.thumbnail }}" class="img-responsive" alt="{{ project.title }}">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
@@ -21,6 +36,9 @@
                             <div class="project-name">
                                 {{ project.title }}
                             </div>
+                            {% if project.card_summary %}
+                            <div class="project-card-summary">{{ project.card_summary }}</div>
+                            {% endif %}
                             <div class="project-tags">
                                 {% for tag in project.tags limit:3 %}
                                 <span class="tag">{{ tag }}</span>
