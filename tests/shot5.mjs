@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch();
+const p=await(await b.newContext({viewport:{width:1280,height:900}})).newPage();
+const errs=[]; p.on('console',m=>m.type()==='error'&&errs.push(m.text())); p.on('pageerror',e=>errs.push('PE:'+e.message));
+await p.goto('http://localhost:4000/#about',{waitUntil:'networkidle'});
+await p.waitForTimeout(800);
+const v=await p.evaluate(()=>({blocks:[...document.querySelectorAll('.value-block')].map(b=>({title:b.querySelector('.value-title')?.textContent, icon:b.querySelector('.value-icon')?.className.match(/fa-[a-z-]+/g)})), oldPara:!!document.querySelector('#about .text-faded')}));
+console.log(JSON.stringify({...v, consoleErrors:errs},null,1));
+await p.locator('#about').screenshot({path:'tests/screenshots/r5-about.png'});
+await b.close();
